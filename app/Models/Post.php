@@ -11,7 +11,7 @@ class Post extends Model
     use HasFactory;
 
     protected $guarded = []; #ENLEVE LA PROTECTION SUR TOUS LES CHAMPS
-    
+
     /*RELATION UN POST APPARTIENT A UN UTILISATEUR*/
     public function user(){
         return $this->belongsTo(User::class);
