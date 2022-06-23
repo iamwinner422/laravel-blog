@@ -14,7 +14,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            /*DEFINITION DE LA FACTORY*/
+            'name'=>$this->faker->sentence(rand(1,3), true)#TITRE EN 1 ET 3 CHARS
         ];
     }
 }
