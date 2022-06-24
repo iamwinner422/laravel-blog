@@ -5,6 +5,11 @@
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="my-5">
+            @foreach($errors->all() as $error)
+                <span class="block text-red-500">{{$error}}</span>
+            @endforeach
+        </div>
         <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data" class="mt-10">
             @csrf
             <x-label value="Titre" for="title"/>
