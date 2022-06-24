@@ -41,9 +41,15 @@ class PostController extends Controller
      * @param  \App\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
-    {
-        //
+    public function store(StorePostRequest $request){
+        $imageName = $request->file('image')->store('posts');
+        Post::create([
+            'title'=>$request->title,
+            'content'=>$request->content,
+            'image'=>$imageName,
+        ]);
+
+        return redirect()->route('dashboard')->with('success', 'Votre post a été crée');
     }
 
     /**
