@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -14,8 +15,10 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('post.index');
+    {   /*RECUPERATION DES POST*/
+        #$posts = Post::all();
+        $posts = Post::with('category', 'user')->get();
+        return view('post.index', compact('posts'));
     }
 
     /**
@@ -83,4 +86,5 @@ class PostController extends Controller
     {
         //
     }
+
 }

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Category;
+use Illuminate\Support\Str;
+
 class Post extends Model
 {
     use HasFactory;
@@ -19,5 +21,9 @@ class Post extends Model
     /*RELATION UN POST APPARTIENT A UNE CATEGORY*/
     public function category(){
         return $this->belongsTo(User::class);
+    }
+
+    public function getTitleAttribute($attribute){
+        return Str::title($attribute);/*RETOUR CHAQUE MOT DANS UN PHRASE EN MAJ*/
     }
 }
